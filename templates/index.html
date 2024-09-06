@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch học, lịch thi theo tuần</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="icon" href="../static/image/Icon-UEF.webp">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <div class="section_calender">
+            <div class="main_content">
+                <div class="header">
+                    <div class="title_section">Lịch học, lịch thi theo tuần</div>
+                    <div class="actions">
+                        <div class="calender" id="calender"></div>
+                        <a href="javascript:;" class="btn btn-action" id="last_week">
+                            <i class='bx bx-chevron-left'></i>
+                            Trở về
+                        </a>
+                        <a href="javascript:;" class="btn btn-action" id="current_week">
+                            <i class='bx bx-calendar'></i>
+                            Hiện tại
+                        </a>                        
+                        <a href="javascript:;" class="btn btn-action" id="next_week">
+                            Tiếp
+                            <i class='bx bx-chevron-right' ></i>
+                        </a>
+                        <a href="/new_timetable.html" class="btn btn-action" id="new_data">
+                            <i class='bx bx-plus'></i>
+                            Thêm
+                        </a>
+                        <a href="/edit_timetable.html" class="btn btn-action" id="edit_data">
+                            <i class='bx bx-edit-alt'></i>
+                            Sửa
+                        </a>
+                    </div>
+                </div>
+                <div class="section_table">
+                    <table>
+                        <thead>
+                            <th>Ca học</th>
+                            <th id="mon"></th>
+                            <th id="tue"></th>
+                            <th id="wed"></th>
+                            <th id="thu"></th>
+                            <th id="fri"></th>
+                            <th id="sat"></th>
+                            <th id="sun"></th>
+                        </thead>
+                        <tbody id="schedule_body">
+                            {% for index in range(1, 4) %}  
+                                {% set period_label = 
+                                    'Sáng' if index == 1 else
+                                    'Chiều' if index == 2 else
+                                    'Tối' if index == 3
+                                %}
+                                <tr>
+                                    <td>{{ period_label }}</td>
+                                    {% for day in range(1, 8) %}  
+                                    <td>
+                                        {% for item in data %}
+                                            {% set class_name = 
+                                                ' theory' if item.Type_class == 'LT' else
+                                                ' practice' if item.Type_class == 'TH' else
+                                                ' online' if item.Type_class == 'ON' else
+                                                ' exam' if item.Type_class == 'EX'
+                                            %}
+                                            {% set period_number_from = 
+                                                1 if index == 1 else
+                                                7 if index == 2 else
+                                                13 if index == 3
+                                            %}
+                                            {% set period_number_to = 
+                                                6 if index == 1 else
+                                                12 if index == 2 else
+                                                15 if index == 3
+                                            %}
+                                            {% if period_number_from <= item.Period_from and item.Period_from <= period_number_to and item.Date_week == day %}
+                                            <div class="box_info{{ class_name }}">
+                                                <div class="name_object">{{ item.Subject }}</div>
+                                                <div>{{ item.ID_class }}</div>
+                                                <div>Tiết: {{ item.Period_from }} - {{ item.Period_to }}</div>
+                                                <div>Phòng: {{ item.Room }}</div>
+                                                <div>GV: {{ item.Teacher }}</div>
+                                                <div>Cơ sở: {{ item.Learning_facility }}</div>
+
+                                                {% if item.Type_class == 'TH' or item.Type_class == 'EX' %}
+                                                <div>Nhóm: {{ item.Team }}</div>
+                                                {% endif %}
+
+                                                {% if item.Type_class == 'ON' %}
+                                                <div>Code: {{ item.Code_online }}</div>
+                                                <div>Phần mềm: {{ item.Learning_software }}</div>
+                                                {% endif %}
+
+                                            </div>
+                                            {% endif %}
+                                        {% endfor %}                                    
+                                    </td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="section_note">
+                    <ul>
+                        <li class="item_note">
+                            <span class="color_note theory"></span>
+                            <span class="name_note">Lịch học lý thuyết</span>
+                        </li>
+                        <li class="item_note">
+                            <span class="color_note practice"></span>
+                            <span class="name_note">Lịch học thực hành</span>                        
+                        </li>
+                        <li class="item_note">
+                            <span class="color_note online"></span>
+                            <span class="name_note">Lịch học trực tuyến</span>                        
+                        </li>
+                        <li class="item_note">
+                            <span class="color_note exam"></span>
+                            <span class="name_note">Lịch thi</span>                        
+                        </li>
+                        <li class="item_note">
+                            <span class="color_note suspension"></span>
+                            <span class="name_note">Lịch học tạm ngưng</span>                        
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/next_week.js" type="text/javascript" defer></script>
+</body>
+</html>

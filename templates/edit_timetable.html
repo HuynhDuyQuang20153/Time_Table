@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa lịch học</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="icon" href="../static/image/Icon-UEF.webp">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <div class="section_add_data">
+            <div class="main_content">
+                <div class="header">
+                    <div class="title_section">Sửa lịch học</div>
+                </div>
+                <div class="section_form">
+                    <form action="/change-data" method="post" class="submit_form_data" id="submit_form_edit_data" enctype="multipart/form-data">
+                        <div class="group_input">
+                            <div class="title">Môn cần sửa: <span class="dot_require">*</span></div>
+                            <select id="subject" name="subject" class="form_select full_width_65"></select>
+                            <input type="hidden" id="subject_id" name="subject_id"> 
+                        </div>
+                        <div class="group_input">
+                            <div class="title">Tiết: <span class="dot_require">*</span></div>
+                            <div class="general_area right_area">
+                                <select id="Period_from" name="Period_from" class="form_select from_to">
+                                    <option value="">Chọn tiết</option>
+                                    <option value="1">Tiết 1</option>
+                                    <option value="2">Tiết 2</option>
+                                    <option value="3">Tiết 3</option>
+                                    <option value="4">Tiết 4</option>
+                                    <option value="5">Tiết 5</option>
+                                    <option value="6">Tiết 6</option>
+                                    <option value="7">Tiết 7</option>
+                                    <option value="8">Tiết 8</option>
+                                    <option value="9">Tiết 9</option>
+                                    <option value="10">Tiết 10</option>
+                                    <option value="11">Tiết 11</option>
+                                    <option value="12">Tiết 12</option>
+                                    <option value="13">Tiết 13</option>
+                                    <option value="14">Tiết 14</option>
+                                    <option value="15">Tiết 15</option>
+                                </select>
+                                đến
+                                <select id="Period_to" name="Period_to" class="form_select from_to">
+                                    <option value="">Chọn tiết</option>
+                                    <option value="1">Tiết 1</option>
+                                    <option value="2">Tiết 2</option>
+                                    <option value="3">Tiết 3</option>
+                                    <option value="4">Tiết 4</option>
+                                    <option value="5">Tiết 5</option>
+                                    <option value="6">Tiết 6</option>
+                                    <option value="7">Tiết 7</option>
+                                    <option value="8">Tiết 8</option>
+                                    <option value="9">Tiết 9</option>
+                                    <option value="10">Tiết 10</option>
+                                    <option value="11">Tiết 11</option>
+                                    <option value="12">Tiết 12</option>
+                                    <option value="13">Tiết 13</option>
+                                    <option value="14">Tiết 14</option>
+                                    <option value="15">Tiết 15</option>
+                                </select>                                
+                            </div>
+                        </div>
+                        <div class="group_input">
+                            <div class="title">
+                                Thời gian: <span class="dot_require">*</span>
+                            </div>
+                            <div class="general_area right_area">
+                                <input type="date" id="Date_start" name="Date_start" class="form_control from_to" value="">
+                                đến
+                                <input type="date" id="Date_end" name="Date_end" class="form_control from_to" value="">                                
+                            </div>
+                        </div>
+                        <div class="group_input">
+                            <div class="title">Lớp - Thứ ngày: <span class="dot_require">*</span></div>
+                            <div class="general_area right_area">
+                                <input type="text" id="ID_class" name="ID_class" class="form_control from_to" placeholder="Mã lớp học phần" value="">     
+                                -       
+                                <select id="date_week" name="date_week" class="form_select from_to">
+                                    <option value="">Chọn thứ</option>
+                                    <option value="1">Thứ 2</option>
+                                    <option value="2">Thứ 3</option>
+                                    <option value="3">Thứ 4</option>
+                                    <option value="4">Thứ 5</option>
+                                    <option value="5">Thứ 6</option>
+                                    <option value="6">Thứ 7</option>
+                                    <option value="7">Chủ nhật</option>
+                                </select>                 
+                            </div>
+                        </div>
+                        <div class="group_input">
+                            <div class="title">Cơ sở học - Phòng: <span class="dot_require">*</span></div>
+                            <div class="general_area right_area">
+                                <select id="Learning_facility" name="Learning_facility" class="form_select from_to">
+                                    <option value="">Chọn cơ sở</option>
+                                    <option value="A">Cơ sở A</option>
+                                    <option value="B">Cơ sở B</option>
+                                </select>    
+                                -       
+                                <input type="text" id="Room" name="Room" class="form_control from_to" placeholder="Phòng học" value="">                      
+                            </div>
+                        </div>
+                        <div class="group_input">
+                            <div class="title">GVHD: <span class="dot_require">*</span></div>
+                            <input type="text" id="Teacher" name="Teacher" class="form_control" placeholder="Giảng viên hướng dẫn" value="">
+                        </div>
+                        <div class="group_input">
+                            <div class="title">Hình thức: <span class="dot_require">*</span></div>
+                            <div class="general_area right_area">
+                                <input type="radio" id="theory" name="type_class" class="form_control" value="LT">LT
+                                <input type="radio" id="practice" name="type_class" class="form_control" value="TH">TH
+                                <input type="radio" id="online" name="type_class" class="form_control" value="ON">ON
+                                <input type="radio" id="exam" name="type_class" class="form_control" value="EX">EX
+                            </div>
+                        </div>
+                        <div class="group_input">
+                            <div class="title">Nhóm: </div>
+                            <input type="text" id="Team" name="Team" class="form_control" placeholder="Nhóm thực hành" value="">
+                        </div>
+                        <div class="group_input">
+                            <div class="title">Code onl - Software: </div>
+                            <div class="general_area right_area">
+                                <input type="text" id="Code_online" name="Code_online" class="form_control from_to" placeholder="Mã code tham gia phòng" value="">    
+                                -       
+                                <input type="text" id="Learning_software" name="Learning_software" class="form_control from_to" placeholder="Phần mềm học" value="">                      
+                            </div>
+                        </div>
+                        <div class="group_input">
+                            <div class="title">Admin code: </div>
+                            <input type="text" id="admin_code" name="admin_code" class="form_control" placeholder="Mã admin" value="">
+                        </div>
+                        <div class="error-notify-box">
+                            <span class="error_data" id="error_notify_new_data">
+                            </span>
+                        </div>
+                        <div class="group_input">
+                            <div class="general_area left_area">
+                                <a href="./index.html" id="back_dashboard" class="btn btn-action">Trở lại</a>
+                                <a href="./new_timetable.html" id="back_dashboard" class="btn btn-action">Thêm lịch học</a>
+                            </div>
+                            <button type="submit" id="btn_new_discount" class="btn btn-action">Lưu thay đổi</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../static/js/get_data.js" type="text/javascript" defer></script>
+</body>
+</html>
