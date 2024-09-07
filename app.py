@@ -1,5 +1,5 @@
  
-from flask import Flask, request, redirect, render_template, send_file, jsonify, Response
+from flask import Flask, request, render_template, jsonify
 from flask_sse import sse
 import os, json
 from datetime import datetime, timedelta
@@ -267,7 +267,8 @@ def add_new_data():
                 "Team": Team,
                 "Code_online": Code_online,
                 "Learning_software": Learning_software,
-                "Type_class": type_class
+                "Type_class": type_class,
+                "Suspension_status": ""
             }
 
             current_data.append(data)                   # Thêm dữ liệu mới vào list
@@ -300,6 +301,7 @@ def save_data():
         Code_online = request.form.get('Code_online')
         Learning_software = request.form.get('Learning_software')
         type_class = request.form.get('type_class')
+        suspension = request.form.get('suspension')
 
         # nếu folder chưa tồn tại thư mục Data thì tạo mới
         path_folder = os.path.join(os.getcwd(), "Data")
@@ -316,7 +318,7 @@ def save_data():
                 json.dump([], file)  # Ở đây, chúng ta tạo file mới với một list trống
 
         # Đọc dữ liệu hiện tại từ file JSON
-        with open(path_save_data, 'r+') as file:
+        with open(path_save_data, 'r') as file:
             try:
                 current_data = json.load(file)  # Đọc dữ liệu hiện tại
 
@@ -340,20 +342,29 @@ def save_data():
                     record["Learning_facility"] = Learning_facility if Learning_facility else record["Learning_facility"]
                     record["Room"] = Room if Room else record["Room"]
                     record["Teacher"] = Teacher if Teacher else record["Teacher"]
-                    record["Team"] = Team if Team else record["Team"]
-                    record["Code_online"] = Code_online if Code_online else record["Code_online"]
-                    record["Learning_software"] = Learning_software if Learning_software else record["Learning_software"]
                     record["Type_class"] = type_class if type_class else record["Type_class"]
+                    record['Suspension_status'] = suspension if suspension is not None else ""
+
+                    record["Team"] = ""
+                    record["Code_online"] = ""
+                    record["Learning_software"] = ""
+
+                    if type_class == "TH" or type_class == "EX":
+                        record["Team"] = Team
+
+                    elif type_class == "ON":
+                        record["Code_online"] = Code_online
+                        record["Learning_software"] = Learning_software
+
                     break
             
             # Nếu không tìm thấy bản ghi với ID cần cập nhật
             if not record_found:
                 return jsonify({"message": "Không tìm thấy dữ liệu với ID này!", "status": "error"}), 404
-
-            # Ghi đè dữ liệu mới vào file JSON
-            file.seek(0)  # Quay lại đầu file để ghi đè
-            json.dump(current_data, file, indent=4)
-            # file.truncate()  # Xóa bất kỳ dữ liệu dư thừa nào (nếu có)
+            
+            # Ghi đè dữ liệu mới vào file JSON (mở file ở chế độ ghi 'w')
+            with open(path_save_data, 'w') as file:
+                json.dump(current_data, file, indent=4)
 
         return jsonify({"message": "Bạn đã sửa lịch học thành công!", "status": "success"}), 200
     
@@ -364,4 +375,5 @@ def save_data():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000)
+    # app.run(host='127.0.0.1', port=5000)
+    app.run(debug=True)
