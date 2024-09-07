@@ -1,5 +1,5 @@
  
-from flask import Flask, request, redirect, render_template, send_file, jsonify, Response
+from flask import Flask, request, render_template, jsonify
 from flask_sse import sse
 import os, json
 from datetime import datetime, timedelta
@@ -375,4 +375,5 @@ def save_data():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000)
+    # app.run(host='127.0.0.1', port=5000)
+    app.run(debug=True)
