@@ -123,3 +123,4 @@ wavfile==4.2.0
 wcwidth==0.2.5
 Werkzeug==2.3.4
 XlsxWriter==3.0.8
+flask_sse
