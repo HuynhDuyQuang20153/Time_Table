@@ -80,6 +80,10 @@
                                             %}
                                             {% if period_number_from <= item.Period_from and item.Period_from <= period_number_to and item.Date_week == day %}
                                             <div class="box_info{{ class_name }}">
+
+                                                {% if item.Suspension_status == "TN" %}
+                                                <div class="tam_ngung"><span>Tạm ngưng</span></div>
+                                                {% endif %}
                                                 <div class="name_object">{{ item.Subject }}</div>
                                                 <div>{{ item.ID_class }}</div>
                                                 <div>Tiết: {{ item.Period_from }} - {{ item.Period_to }}</div>

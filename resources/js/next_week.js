@@ -83,8 +83,15 @@ document.addEventListener('DOMContentLoaded', function() {
                             const div = document.createElement('div');
                             div.className = `box_info${class_name}`;
 
+                            let innerHTML = ``;
+
+                            // Điều kiện cho tạm ngưng
+                            if (item.Suspension_status === 'TN') {
+                                innerHTML += `<div class="tam_ngung"><span>Tạm ngưng</span></div>`;
+                            }
+
                             // Tạo nội dung HTML
-                            let innerHTML = `
+                            innerHTML += `
                                 <div class="name_object">${item.Subject}</div>
                                 <div>${item.ID_class}</div>
                                 <div>Tiết: ${item.Period_from} - ${item.Period_to}</div>

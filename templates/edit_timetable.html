@@ -130,7 +130,14 @@
                         </div>
                         <div class="group_input">
                             <div class="title">Admin code: </div>
-                            <input type="text" id="admin_code" name="admin_code" class="form_control" placeholder="Mã admin" value="">
+                            <div class="general_area right_area">
+                                <input type="text" id="admin_code" name="admin_code" class="form_control from_to admin_code" placeholder="Mã admin" value="">
+                                
+                                <span class="suspension_span">
+                                    <input type="checkbox" id="suspension" name="suspension" class="form_control" value="TN">
+                                    <span>Tạm ngưng</span> 
+                                </span>
+                            </div>
                         </div>
                         <div class="error-notify-box">
                             <span class="error_data" id="error_notify_new_data">

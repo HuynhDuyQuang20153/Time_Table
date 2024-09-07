@@ -206,7 +206,7 @@ td:first-child{
     color: #003763;
 }
 
-.box_info .tam_ngung.show {
+.box_info .tam_ngung {
     position: absolute;
     left: -6px;
     top: -5px;
@@ -216,7 +216,7 @@ td:first-child{
     height: 100%;
     text-align: right;
 }
-.tam_ngung.show span{
+.tam_ngung span{
     font-size: 10px;
     font-weight: 700;
     color: #FFF;
@@ -233,7 +233,7 @@ td:first-child{
     top: 19px;
     left: -21px;
 }
-.tam_ngung.show span::after, .tam_ngung.show span::before {
+.tam_ngung span::after, .tam_ngung span::before {
     border-bottom: 3px solid transparent;
     border-top: 3px solid #a3362a;
     content: "";
@@ -241,12 +241,12 @@ td:first-child{
     top: 100%;
     z-index: -1;
 }
-.tam_ngung.show span::before {
+.tam_ngung span::before {
     border-left: 3px solid #a3362a;
     border-right: 3px solid transparent;
     left: 0;
 }
-.tam_ngung.show span::after {
+.tam_ngung span::after {
     right: 0;
     border-left: 3px solid transparent;
     border-right: 3px solid #a3362a;
@@ -383,6 +383,27 @@ td:first-child{
     width: 100%;
 }
 
+.submit_form_data .group_input .general_area .form_control.from_to.admin_code{
+    margin-right: 5px;
+}
+
+.submit_form_data .group_input .suspension_span{
+    color: #003763;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+    gap: 10px;
+    margin-left: 15px;
+}
+.submit_form_data .group_input .suspension_span > input{
+    width: 10%;
+}
+.submit_form_data .group_input .suspension_span > span{
+    width: 100%;
+    font-size: 14px;
+}
 
 .submit_form_data .group_input .form_select{
     border-radius: 5px;

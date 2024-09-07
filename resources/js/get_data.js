@@ -1,4 +1,4 @@
-// Giả sử bạn có một API trả về danh sách môn học
+// Gọi API để trả về danh sách các môn học
 fetch('/get-data')
     .then(response => response.json())
     .then(result => {
@@ -21,14 +21,15 @@ fetch('/get-data')
 
     document.getElementById('subject').addEventListener('change', function() {
         const selectedOption = this.selectedOptions[0]; // Lấy option đang chọn
-        const id_subject = selectedOption.getAttribute('data-id'); // Lấy giá trị data-id từ option        
+        const id_subject = selectedOption.getAttribute('data-id'); 
         document.getElementById('subject_id').value = id_subject; 
 
         if (id_subject) {
             // Gọi API để lấy chi tiết môn học
             fetch(`/get-data-details?id_subject=${id_subject}`)
                 .then(response => response.json())
-                .then(result => {                   
+                .then(result => {    
+                    document.getElementById('error_notify_new_data').textContent = '';
                     document.getElementById('Period_from').value = result.data[0].Period_from;
                     document.getElementById('Period_to').value = result.data[0].Period_to;
                     document.getElementById('Date_start').value = result.data[0].Date_start;
@@ -42,6 +43,19 @@ fetch('/get-data')
                     document.getElementById('Team').value = result.data[0].Team;
                     document.getElementById('Code_online').value = result.data[0].Code_online;
                     document.getElementById('Learning_software').value = result.data[0].Learning_software;
+
+                    if (result.data[0].Suspension_status !== "") {
+                        const checkbox = document.querySelector(`input[name="suspension"][value="${result.data[0].Suspension_status}"]`);
+                        
+                        if (checkbox) {
+                            checkbox.checked = true;  // Đánh dấu checkbox nếu tìm thấy
+                        }
+                    } else {
+                        // Nếu giá trị là chuỗi rỗng, bỏ chọn tất cả checkbox
+                        document.querySelectorAll('input[name="suspension"]').forEach(checkbox => {
+                            checkbox.checked = false;
+                        });
+                    }
                 })
                 .catch(error => console.error('Error fetching subject details:', error));
         }
