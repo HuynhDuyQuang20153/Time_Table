@@ -91,6 +91,14 @@ html{
     color: #1da1f2;
 }
 
+.header .actions .actions_right{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
 .btn{
     padding: 4px 8px;
     font-size: 14px;
@@ -120,6 +128,9 @@ html{
     margin-top: 10px;
     width: 100%;
     height: 100%;
+}
+.section_table{
+    overflow-x: auto;
 }
 
 table{
@@ -283,6 +294,7 @@ td:first-child{
 .section_note ul .item_note{
     display: inline-block;
     margin-right: 15px;
+    margin-bottom: 10px;
 }
 
 .section_note ul .item_note .color_note{
@@ -456,3 +468,282 @@ td:first-child{
     color: red;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+.section-popup {
+    display: none;
+  }
+.section-popup.active {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 10px;
+    background-color: #fff;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 30px 30px 60px rgba(1, 41, 112, 0.1);
+    z-index: 21;
+    cursor: auto;
+    animation: fadeIn 0.7s;
+    width: 250px;
+    min-height: 120px;
+  }
+  .section-popup.active .box-content {
+    width: 100%;
+    max-height: 487px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+    border: 1px solid #1da1f2;
+    border-radius: 10px;
+    gap: 10px;
+  }
+  .section-popup.active .box-content .title_order {
+    width: 100%;
+    height: auto;
+    float: left;
+    color: #1da1f2;
+    margin: 0;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .section-popup.active .box-content .popup-title{
+    padding: 5px 0 0 0px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.section-popup.active .box-content .group_button_popup{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /****************************** RESPONSIVE ********************************/
+  @media screen and (max-width: 1301px) {
+    .section_calender {
+        width: 80%;
+    }
+    .section_add_data {
+        width: 40%;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .section_calender {
+        width: 85%;
+    }
+    .section_add_data {
+        width: 45%;
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .section_calender {
+        width: 90%;
+    }
+    .section_add_data {
+        width: 50%;
+    }
+    .section_note ul{
+        margin-top: 10px;
+    }
+    .header {
+        flex-direction: column;
+    }
+    .header.header-edit {
+        flex-direction: row;
+    }
+    .header .actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .box_info {
+        width: 150px;
+    }
+  }
+  @media screen and (max-width: 926px){
+    th, td {
+        font-size: 13px;
+    }
+    .box_info {
+        font-size: 13px;
+    }
+    .section_add_data {
+        width: 60%;
+    }
+  }
+  @media screen and (max-width: 768px){
+    .btn {
+        padding: 4px 8px;
+    }
+    .header .actions .actions_right{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .section_note ul .item_note .name_note {
+        font-size: 14px;
+    }
+    .section_add_data {
+        width: 66%;
+    }
+  }
+  @media screen and (max-width: 741px){
+    .header .actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        padding-top: 0;
+        gap: 10px;
+    }
+    .header .actions .actions_right{
+        gap: 10px;
+    }
+    .btn {
+        padding: 4px 10px;
+        font-size: 13px;
+    }
+    .header .actions .calender {
+        height: 25px;
+        line-height: 15px;
+    }
+  }
+  @media screen and (max-width: 601px) {
+    .section_add_data {
+        width: 90%;
+    }
+    .title_section {
+        font-size: 18px;
+    }
+    th, td {
+        font-size: 12px;
+    }
+    .box_info {
+        font-size: 12px;
+    }
+    .tam_ngung span {
+        line-height: 18px;
+        top: 21px;
+        left: -20px;
+    }
+    .section_note ul .item_note .color_note {
+        width: 30px;
+    }
+  }
+  @media screen and (max-width: 426px) {
+    .section_add_data {
+        width: 95%;
+        margin: 10px 0px;
+    }
+    .submit_form_data .group_input .form_select.full_width_65{
+        width: 100%;
+    }
+    .section_calender {
+        width: 95%;
+        margin: 10px 0px;
+    }
+    .header .actions .actions_right {
+        justify-content: flex-end;
+    }
+    .btn {
+        line-height: 1.2;
+    }
+    .section_note ul .item_note {
+        display: flex;
+        align-items: center;
+    }
+    .header .actions .calender {
+        font-size: 14px;
+    }
+    .box_info {
+        width: 120px;
+    }
+    .submit_form_data .group_input {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0;
+        padding: 10px 0 0 0;
+    }
+    .submit_form_data .group_input .general_area {
+        width: 100%;
+        gap: 5px;
+        font-size: 13px;
+    }
+    .submit_form_data .group_input .form_control {
+        width: 100%;
+        font-size: 13px;
+    }
+    .submit_form_data .group_input .title {
+        font-size: 14px;
+    }
+    .submit_form_data .group_input button {
+        height: 22px;
+        margin-top: 5px;
+    }
+    .submit_form_data .error-notify-box {
+        padding-top: 10px;
+    }
+    .submit_form_data .error-notify-box .error_data {
+        font-size: 14px;
+    }
+    .submit_form_data .group_input.group_button{
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .submit_form_data .group_input.group_button .general_area {
+        width: 60%;
+    }
+    .submit_form_data .group_input.group_button .general_area.group_button_left {
+        width: 70%;
+    }
+    .section-popup.active {
+        width: 200px;
+      }
+    .section-popup.active .box-content .title_order {
+        font-size: 14px;
+    }
+    .section-popup.active .box-content {
+        padding: 10px;
+      }
+  }
+  @media screen and (max-width: 320px) {
+    .section_note ul .item_note .name_note {
+        font-size: 12px;
+    }
+    .section_add_data {
+        padding: 10px;
+    }
+    .submit_form_data .group_input .general_area {
+        font-size: 12px;
+    }
+    .submit_form_data .group_input.group_button.group__new{
+        flex-direction: column;
+    }
+    .submit_form_data .group_input.group_button .general_area.group_button_left {
+        width: 100%;
+    }
+  }

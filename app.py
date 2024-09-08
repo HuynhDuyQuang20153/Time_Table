@@ -186,6 +186,25 @@ def get_data():
 
 
 
+@app.route('/delete-all-data')
+def get_delete_data():
+    path_folder = os.path.join(os.getcwd(), "Data")
+    filename = "All_Data.json"
+    path_file_data = os.path.join(path_folder, filename)
+
+    if os.path.exists(path_file_data):
+        try:
+            os.remove(path_file_data)
+            return jsonify({"status": "success", "message": "Xóa toàn bộ dữ liệu thành công!"}), 200
+        
+        except Exception as e:
+            return jsonify({"status": "error", "message": f"An error occurred: {str(e)}"})
+    else:
+        return jsonify({"status": "error", "message": "File All_Data.json không tồn tại!"})
+
+
+
+
 @app.route('/get-data-details')
 def get_data_details():
     id_subject = request.args.get('id_subject', None)  # Giá trị mặc định là None nếu không có tham số

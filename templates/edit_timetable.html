@@ -12,8 +12,9 @@
     <div class="container">
         <div class="section_add_data">
             <div class="main_content">
-                <div class="header">
+                <div class="header header-edit">
                     <div class="title_section">Sửa lịch học</div>
+                    <div id="show_popup_delete" class="btn btn-action">Xóa All Data</div>
                 </div>
                 <div class="section_form">
                     <form action="/change-data" method="post" class="submit_form_data" id="submit_form_edit_data" enctype="multipart/form-data">
@@ -143,7 +144,7 @@
                             <span class="error_data" id="error_notify_new_data">
                             </span>
                         </div>
-                        <div class="group_input">
+                        <div class="group_input group_button">
                             <div class="general_area left_area">
                                 <a href="./index.html" id="back_dashboard" class="btn btn-action">Trở lại</a>
                                 <a href="./new_timetable.html" id="back_dashboard" class="btn btn-action">Thêm lịch học</a>
@@ -155,6 +156,21 @@
             </div>
         </div>
     </div>
+
+    <!-- popup xác nhận thực hiện  -->
+    <div class="section-popup" id="popup-confirm-delete">
+        <div class="box-content">
+            <h5 class="popup-title">
+                <span class="title_order">Xóa toàn bộ dữ liệu ?</span>
+            </h5>
+            <div class="group_button_popup">
+                <div id="btn_close_confirm" class="btn btn-action btn_secondary">Đóng</div>
+                <div id="accept_delete_all_data_json" onclick="delete_all_data_json()" class="btn btn-action">Xác nhận</div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="../static/js/get_data.js" type="text/javascript" defer></script>
 </body>
 </html>

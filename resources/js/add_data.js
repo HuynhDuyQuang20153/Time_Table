@@ -10,8 +10,10 @@ function getSelectedRadioValue() {
 
 function delete_all_data() {
     const form = document.getElementById('submit_form_new_data');
+    document.getElementById('error_notify_new_data').textContent = '';
     form.reset();
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -111,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const admin_code_Regex = 20153;    
-        if (admin_code != admin_code_Regex) {
+        if (admin_code !== admin_code_Regex) {
             error.textContent = 'Sai mã Admin, vui lòng nhập lại!';
             return;
         }

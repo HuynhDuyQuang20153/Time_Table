@@ -18,6 +18,48 @@ fetch('/get-data')
 
 
 
+    var show_popup = document.getElementById('show_popup_delete');
+    if(show_popup){
+        show_popup.addEventListener('click', function(event) {
+            var popup = document.getElementById('popup-confirm-delete');
+            popup.classList.add('active');
+        });
+    } else {
+        console.log("Không có phần tử id=show_popup_delete ");
+    }
+    
+    var close_popup = document.getElementById('btn_close_confirm');
+    if(close_popup){
+        close_popup.addEventListener('click', function(event) {
+            var popup = document.getElementById('popup-confirm-delete');
+            popup.classList.remove('active');
+        });
+    } else {
+        console.log("Không có phần tử id=btn_close_confirm ");
+    }
+    
+    
+    function delete_all_data_json() {
+        fetch('/delete-all-data')
+        .then(response => response.json())
+        .then(result => {
+            var error = document.getElementById('error_notify_new_data');
+            if(result.status = "success"){
+                error.textContent = result.message;
+                var popup = document.getElementById('popup-confirm-delete');
+                popup.classList.remove('active');
+
+            } else {
+                error.textContent = result.message;
+            }
+        })
+        .catch(error => console.error('Error fetching subjects:', error));
+    }
+    
+
+
+
+
 
     document.getElementById('subject').addEventListener('change', function() {
         const selectedOption = this.selectedOptions[0]; // Lấy option đang chọn
