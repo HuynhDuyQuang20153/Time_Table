@@ -364,7 +364,8 @@ def save_data():
                     record["Type_class"] = type_class if type_class else record["Type_class"]
                     record['Suspension_status'] = suspension if suspension is not None else ""
 
-                    record["Team"] = ""
+                    # record["Team"] = ""
+                    record["Team"] = Team if Team else record["Team"]
                     record["Code_online"] = ""
                     record["Learning_software"] = ""
 

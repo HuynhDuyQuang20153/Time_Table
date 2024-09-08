@@ -30,9 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function get_Date_Start_Of_Week() {
-        const today = new Date();
+        // const today = new Date();
         // Lấy ngày thứ Hai của tuần hiện tại
-        return new Date(today.setDate(today.getDate() - today.getDay() + 1));
+        // return new Date(today.setDate(today.getDate() - today.getDay() + 1));
+
+        const today = new Date();
+        const day = today.getDay();
+        const diff = today.getDate() - day + (day === 0 ? -6 : 1); // Nếu Chủ Nhật, tính từ Thứ Hai
+        return new Date(today.setDate(diff));
     }
 
     function update_Week(startOfWeek, weekOffset) {
@@ -98,12 +103,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div>Phòng: ${item.Room}</div>
                                 <div>GV: ${item.Teacher}</div>
                                 <div>Cơ sở: ${item.Learning_facility}</div>
+                                <div>Nhóm: ${item.Team}</div>
                             `;
 
-                            // Điều kiện cho loại lớp 'TH' hoặc 'EX'
-                            if (item.Type_class === 'TH' || item.Type_class === 'EX') {
-                                innerHTML += `<div>Nhóm: ${item.Team}</div>`;
-                            }
+                            // // Điều kiện cho loại lớp 'TH' hoặc 'EX'
+                            // if (item.Type_class === 'TH' || item.Type_class === 'EX') {
+                            //     innerHTML += `<div>Nhóm: ${item.Team}</div>`;
+                            // }
 
                             // Điều kiện cho loại lớp 'ON'
                             if (item.Type_class === 'ON') {

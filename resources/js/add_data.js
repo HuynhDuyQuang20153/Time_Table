@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const admin_code_Regex = 20153;    
-        if (admin_code !== admin_code_Regex) {
+        if (admin_code != admin_code_Regex) {
             error.textContent = 'Sai mã Admin, vui lòng nhập lại!';
             return;
         }

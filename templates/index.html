@@ -92,10 +92,7 @@
                                                 <div>Phòng: {{ item.Room }}</div>
                                                 <div>GV: {{ item.Teacher }}</div>
                                                 <div>Cơ sở: {{ item.Learning_facility }}</div>
-
-                                                {% if item.Type_class == 'TH' or item.Type_class == 'EX' %}
                                                 <div>Nhóm: {{ item.Team }}</div>
-                                                {% endif %}
 
                                                 {% if item.Type_class == 'ON' %}
                                                 <div>Code: {{ item.Code_online }}</div>
@@ -133,6 +130,23 @@
                         <li class="item_note">
                             <span class="color_note suspension"></span>
                             <span class="name_note">Lịch học tạm ngưng</span>                        
+                        </li>
+                    </ul>
+                    <ul>
+                        <li class="item_note">
+                            <span class="name_note">Tiết 1: từ 6h45p</span>                        
+                        </li>
+                        <li class="item_note">
+                            <span class="name_note">Tiết 4: từ 9h35p</span>                        
+                        </li>
+                        <li class="item_note">
+                            <span class="name_note">Tiết 7: từ 12h45p</span>                        
+                        </li>
+                        <li class="item_note">
+                            <span class="name_note">Tiết 10: từ 15h35p</span>                        
+                        </li>
+                        <li class="item_note">
+                            <span class="name_note">Tiết 13: ???</span>                        
                         </li>
                     </ul>
                 </div>

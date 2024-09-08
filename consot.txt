@@ -1,0 +1,3 @@
+{% if item.Type_class == 'TH' or item.Type_class == 'EX' %}
+    <div>Nhóm: {{ item.Team }}</div>
+{% endif %}
